@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --white-shadow:#ffffff7b;
+    --white: #fff;
+    --dark-blue: #0E242F;
+    --dark-text: #191c1e;
+    --dark-blue-shadow: #0c2a3b8d;
+    --blue: #2f3082;
+
+    --transition: .5s all ease-in-out;
+}
+
+.menu{
+    position: fixed;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.menu span{
+    color: var(--white-shadow);
+    font-size: 2rem;
+    margin-right: auto;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.menu span:hover{
+    scale: 1.1;
+    color: var(--white);
+}
+
+.menu ul{
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    width: 100%;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    color: var(--white-shadow);
+    font-family: "Inter", sans-serif;
+    transition: var(--transition);
+}
+
+.menu ul li a:hover{
+    font-size: large;
+    color: var(--white);
+}
+
+.banner{
+    height: 100vh;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.banner-text{
+    color: var(--white);
+}
+
+.banner-text h1{
+    letter-spacing: 10px;
+    text-shadow: 0px 0px 20px var(--white-shadow);
+    font-size: 4rem;
+}
+
+.banner-text span{
+    font-family: "Inter", sans-serif;
+}
+
+/* Banner */
+.banner{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: var(--dark-blue);
+}
+
+/* Globo que se move */
+.globe{
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background-image: url("https://wallpapers.com/images/hd/satellite-world-map-99d6y5gsakbb8wh9.jpg");
+    background-size: cover;
+    box-shadow: -15px -15px 20px var(--dark-blue-shadow) inset, 10px 10px 25px var(--white-shadow) inset, 0px 0px 10px var(--dark-blue);
+    animation: rotate 10s linear infinite;
+    behavior: smooth;
+}
+
+@keyframes rotate {
+    to{
+        background-position: 100%;
+    }
+}
+
+.globe:hover{
+    animation-play-state: paused;
+}

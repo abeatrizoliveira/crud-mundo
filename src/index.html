@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=globe" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Mundo</title>
+</head>
+<body>
+  <nav class="menu">
+    <span class="material-symbols-outlined">globe</span>
+    <ul>
+      <li><a href="">Início</a></li>
+      <li><a href="">Países</a></li>
+      <li><a href="">Cidades</a></li>
+      <li><a href="">Crud</a></li>
+    </ul>
+  </nav>
+    <div class="banner">
+        <div class="globe"></div>
+        <div class="banner-text">
+            <h1>TERRA</h1>
+            <span>Seu planeta, sua casa, seu lar.</span>
+        </div>
+    </div>
+</body>
+
+<script>
+  // Código para mover a imagem do globo de acordo com o mouse
+  const globe = document.querySelector('.globe');
+  document.addEventListener('mousemove', (e) => {
+    let x = e.clientX / window.innerWidth * 100;
+    let y = e.clientY / window.innerHeight * 100;
+    globe.style.backgroundPosition = `${x}% ${y}%`;
+  });
+</script>
+
+</html>
