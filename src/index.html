@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=globe" />
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/ccf50dfefd.js" crossorigin="anonymous"></script>
     <title>Mundo</title>
 </head>
 <body>
@@ -36,12 +37,29 @@
 
     <!-- Ondas para transição de conteúdo -->
     <div class="onda"></div>
-    <div class="onda clara"></div>
 
     <!-- Sobre nosso planeta -->
     <div class="sobre" id="sobre">
-      <h2>Planeta Terra</h2>
-      <p>Terra é um planeta cheio de diversidade, com paisagens naturais, cidades movimentadas e diferentes culturas. Aqui você encontra oceanos, florestas, desertos e montanhas, além de uma grande variedade de espécies e modos de vida. Seja explorando lugares tranquilos ou centros urbanos, sempre há algo novo para descobrir.</p>
+      <div class="left">
+         <h2>PLANETA TERRA</h2>
+        <p>A Terra é um planeta cheio de diversidade, com paisagens naturais, cidades movimentadas e diferentes culturas. Aqui você encontra oceanos, florestas, desertos e montanhas, além de uma grande variedade de espécies e modos de vida. Seja explorando lugares tranquilos ou centros urbanos, sempre há algo novo para descobrir.</p>
+      </div>
+      <div class="right">
+        <div class="container-slide">
+          <button id="prev-button">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <div class="container-images">
+            <img src="./assets/images/brasil.jpg" alt="" class="slider active">
+            <img src="./assets/images/japao.jpg" alt="" class="slider">
+            <img src="./assets/images/eua.jpg" alt="" class="slider">
+          </div>
+          <img src="https://cdn.pixabay.com/photo/2016/04/24/05/15/world-1348807_1280.png" alt="" class="globe-small">
+          <button id="next-button">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="paises">
@@ -51,16 +69,8 @@
     <footer>
       <!-- Criar um footer simples -->
     </footer>
+
+    <script src="js/script.js"></script>
+
 </body>
-
-<script>
-  // Código para mover a imagem do globo de acordo com o mouse
-  const globe = document.querySelector('.globe');
-  document.addEventListener('mousemove', (e) => {
-    let x = e.clientX / window.innerWidth * 100;
-    let y = e.clientY / window.innerHeight * 100;
-    globe.style.backgroundPosition = `${x}% ${y}%`;
-  });
-</script>
-
 </html>
