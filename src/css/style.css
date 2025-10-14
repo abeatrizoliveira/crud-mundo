@@ -13,10 +13,9 @@
     --dark-blue: #0E242F;
     --dark-text: #191c1e;
     --dark-blue-shadow: #0c2a3b8d;
-    --light-blue: #6b8ea3;
     --blue: #2f3082;
 
-    --transition: .5s all ease-in-out;
+    --transition: .5s all ease;
 }
 
 .menu{
@@ -28,7 +27,7 @@
     z-index: 2;
 }
 
-.menu span{
+.menu i{
     color: var(--white-shadow);
     font-size: 2rem;
     margin-right: auto;
@@ -36,7 +35,7 @@
     transition: var(--transition);
 }
 
-.menu span:hover{
+.menu i:hover{
     scale: 1.1;
     color: var(--white);
 }
@@ -139,37 +138,17 @@
     text-align: center;
 }
 
-/* ondas para transição de tela */
-
-.onda {
-  position: absolute;
-  background-image: url(../assets/images/onda.png);
-  background-repeat: repeat-x;
-  width: 100%;
-  height: 129px;
-  background-size: auto 129px;
-  transform: scaleY(-1);
-  animation: onda 15s linear infinite;
-  background-color: var(--light-blue);
-}
-
-@keyframes onda {
-  from { background-position: 0 0; }
-  to   { background-position: 1280px 0; } 
-}
-
-
-
 /* sobre */
 .sobre{
     height: 100vh;
-    padding: 20px;
-    margin-top: 40px;
+    width: 100%;
+    padding: 40px;
     display: flex;
-    background-color: var(--light-blue);
+    background-color: var(--dark-blue);
 }
 
-.sobre .left, .sobre .right{
+.sobre .left, 
+.sobre .right{
     flex: 1;
     display: flex;
     justify-content: center;
@@ -177,80 +156,28 @@
     flex-direction: column;
 }
 
+.sobre .left{
+    padding: 20px;
+    gap: 20px;
+}
+
 .sobre .left h2{
-    text-align: center;
-    font-size: 2.5rem;
+    text-align: left;
+    font-size: 3rem;
     padding: 10px;
     color: var(--white);
-    text-shadow: 0px 0px 10px var(--white-shadow);
+    text-shadow: 0px 0px 4px var(--white-shadow);
 }
 
 .sobre .left p{
     text-align: center;
     font-family: "Inter", sans-serif;
-    color: var(--dark-text);
-    text-align: justify;
-    font-size: 1.2rem;
+    color: var(--white);
+    font-size: 1.1rem;
     line-height: 1.5;
-    width: 90%;
-    text-indent: 20px;
 }
-
-/* Slides */
-
-.container-slide{
+.sobre .right img{
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.container-images{
-    width: 520px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.slider{
-    position: absolute;
-    width: 100%;
-    opacity: 0;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px var(--dark-blue-shadow);
-}
-
-.slider.active{
-    opacity: 1;
-    transition: var(--transition);
-}
-
-#prev-button, #next-button{ 
-    background-color: transparent;
-    border: none;
-    outline: none;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    transition: var(--transition);
-}
-#prev-button i, #next-button i{
-    font-size: x-large;
-    color: var(--dark-blue);
-}
-
-#prev-button:hover, #next-button:hover{
-    transform:scale(1.1);
-}
-
-.globe-small{
-    width: 150px;
-    z-index: 1  ;
-    position: absolute;
-    margin-bottom: -320px;
-    margin-left: -500px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 10px var(--dark-blue-shadow);
+    height: 100%;
+    object-fit: contain;
 }
