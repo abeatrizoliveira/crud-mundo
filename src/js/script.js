@@ -6,40 +6,34 @@ document.addEventListener('mousemove', (e) => {
     globe.style.backgroundPosition = `${x}% ${y}%`;
 });
 
-// Script para slider funcionar
-const slider = document.querySelectorAll('.slider');
-const btnPrev = document.getElementById('prev-button');
-const btnNext = document.getElementById('next-button');
 
-let currentSlide = 0;
+// Código para o menu sumir e aparecer
+const menu = document.querySelector('.menu');
+console.log("Scroll:", window.scrollY);
 
-function hideSlider() {
-    slider.forEach(item => item.classList.remove('active'))
-}
-
-function showSlider() {
-    slider[currentSlide].classList.add('active')
-}
-
-function nextSlider() {
-    hideSlider();
-    if(currentSlide === slider.length - 1) {
-        currentSlide = 0;
-    } else {
-        currentSlide++;
+addEventListener("scroll", (event) => {
+    if(window.scrollY > 100){
+        menu.classList.add('hiden');
+    }else{
+        menu.classList.remove('hiden');
     }
-    showSlider();
-}
+ })
+ 
 
-function prevSlider() {
-    hideSlider();
-    if(currentSlide === 0) {
-        currentSlide = slider.length - 1
-    } else {
-        currentSlide--;
-    }
-    showSlider();
+// Código para a animação só funcionar quando estiver lá na imagem
+function handleIntersection(entries, observer) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) { 
+            entry.target.classList.add('animado');
+            observer.unobserve(entry.target); 
+        }
+    });
 }
+const elementoParaAnimar = document.querySelector('.right img');
 
-btnPrev.addEventListener('click', prevSlider);
-btnNext.addEventListener('click', nextSlider);
+const observer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.1 
+});
+if (elementoParaAnimar) {
+    observer.observe(elementoParaAnimar);
+}

@@ -13,6 +13,7 @@
     --dark-blue: #0E242F;
     --dark-text: #191c1e;
     --dark-blue-shadow: #0c2a3b8d;
+    --dark-shadow: #020e1498;
     --blue: #2f3082;
 
     --transition: .5s all ease;
@@ -25,6 +26,17 @@
     align-items: center;
     width: 100%;
     z-index: 2;
+    transition: var(--transition); 
+}
+
+.menu.hiden{
+    opacity: 0;
+}
+
+.menu.hiden:hover{
+    opacity: 1;
+    background-color: var(--dark-blue);
+    box-shadow: 0px 0px 10px var(--dark-shadow);
 }
 
 .menu i{
@@ -59,6 +71,7 @@
     font-size: large;
     color: var(--white);
 }
+
 
 .banner{
     height: 100vh;
@@ -180,4 +193,223 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    opacity: 0; 
+    transform: translateY(50px) scale(0.9);
 }
+
+.sobre .right img.animado {
+    animation: salto 1.5s ease-out 1 forwards;
+}
+
+@keyframes salto {
+    0% {
+        opacity: 0;
+        transform: translateY(100px) scale(0.5); 
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-40px) scale(1.1); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* TELA DE CRUD */
+.content-crud{
+    position: relative;  
+    background-color: var(--dark-blue);
+    z-index: 1;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.container-crud{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    z-index: 2;
+}
+
+.content-crud .titulo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.content-crud .titulo .btn-adicionar{
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.content-crud .titulo .btn-adicionar:hover{
+    scale: 1.1;
+}
+
+.content-crud span{
+    font-size: xx-large;
+    color: var(--white);
+    text-shadow: 0px 0px 20px var(--white-shadow);
+}
+
+.content-crud table {
+    width: 60%;
+    height: auto;
+    font-family: "Inter", sans-serif;
+    border-radius: 10px;    
+    border: 1.5px solid rgb(255, 255, 255); 
+    border-collapse: separate;    
+    border-spacing: 0;          
+    box-shadow: 0px 0px 10px var(--dark-shadow);
+    overflow-y: hidden;      
+    background-color: var(--dark-blue);    
+}
+
+.content-crud table th,
+.content-crud table td {
+    padding: 12px 15px;
+    color: var(--white);
+    border: none; 
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.5); 
+    /* border-right: 1.5px solid rgba(255, 255, 255, 0.5);  */
+    text-align: left;
+}
+
+.content-crud table td span{
+    cursor: pointer;
+    font-size: x-large;
+}
+
+.content-crud table tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.05);
+}
+
+.content-crud table tr:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.dados{
+    width: 60%;
+    display: flex;
+    color: var(--white);
+    justify-content: space-between;
+    font-family: "Inter", sans-serif;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+
+    /* Parte dos formulários!! */
+
+    .content{
+        height: 100vh;
+        width: 100%;
+        background-color: var(--dark-blue);
+    }
+
+    .btn-voltar{
+        position: relative;
+        height: 60px;
+        padding: 20px;
+        display: flex;
+        color: var(--white);
+        text-decoration: none;
+        z-index: 1;
+    }
+
+    .container-form {
+        position: relative;
+        height: calc(100% - 80px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .globe-form {
+        position: absolute; 
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background-image: url("https://wallpapers.com/images/hd/satellite-world-map-99d6y5gsakbb8wh9.jpg");
+        background-size: cover;
+        box-shadow: -15px -15px 20px var(--dark-blue-shadow) inset,
+                    10px 10px 25px var(--white-shadow) inset,
+                    0px 0px 10px var(--dark-blue);
+        animation: rotate 20s linear infinite;
+        z-index: 0; 
+    }
+
+    .form fieldset {
+        position: relative;
+        z-index: 1; 
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .form legend{
+        color: var(--white);
+        font-size: 2rem;
+        font-weight: normal;
+    }
+
+    .form input{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        height: 30px;
+        border-bottom: 1.5px solid var(--white);
+        text-align: left;
+        color: var(--white);
+    }
+
+    .form input::placeholder{
+        color: var(--white-shadow);
+    }
+
+    .form select{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        height: 30px;
+        border-bottom: 1.5px solid var(--white);
+        text-align: left;
+        color: var(--white);
+    }
+
+    .form select option{
+        color: var(--dark-text);
+    }
+
+    .form select option:hover{
+        background-color: var(--dark-blue);
+    }
+
+    .form .btn-enviar{
+        height: 40px;
+        background-color: var(--white);
+        color: var(--dark-text);
+        text-align: center;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: var(--transition);
+    }
