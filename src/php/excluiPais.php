@@ -1,13 +1,23 @@
 <?php
 include 'conexao.php';
-$idPais = $_GET['id'];
 
-$queryExcluir = "DELETE FROM pais WHERE id_pais = $idPais;";
-mysqli_query($mysqli, $queryExcluir);  
+header('Content-Type: application/json');
 
-if (mysqli_affected_rows($mysqli) > 0) {
-    header('Location: ../crud.php');
+if (!isset($_GET['id'])) {
+    echo json_encode(['success' => false, 'message' => 'ID do país não fornecido.']);
     exit();
-} else {
-    echo "Erro ao excluir o país.";
 }
+
+$idPais = (int)$_GET['id']; // força inteiro por segurança
+$queryExcluir = "DELETE FROM pais WHERE id_pais = $idPais;";
+
+if (mysqli_query($mysqli, $queryExcluir)) {
+    if (mysqli_affected_rows($mysqli) > 0) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Nenhum país encontrado para excluir.']);
+    }
+} else {
+    echo json_encode(['success' => false, 'message' => 'Erro no banco de dados.']);
+}
+?>

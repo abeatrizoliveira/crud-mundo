@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
         $idPais = $pais['id_pais'];
 
     } else {
-        echo "Usuário não encontrado!";
+        echo "País não encontrado!";
         exit();
     }
 }
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_left,keyboard_arrow_right " />
-    <link rel="shortcut icon" href="./assets/images/globe-solid.svg" type="image/svg">
+    <link rel="shortcut icon" href="../assets/images/globe-solid.svg" type="image/svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios" />
     <script src="https://kit.fontawesome.com/ccf50dfefd.js" crossorigin="anonymous"></script>
     <title>Mundo</title>
@@ -75,10 +75,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <option value="">Selecione um continente</option>
                         <option value="1" <?php if($continente == 1) echo "selected"; ?>>África</option>
                         <option value="2" <?php if($continente == 2) echo "selected"; ?>>América</option>
-                        <option value="3" <?php if($continente == 3) echo "selected"; ?>>Antártida</option>
-                        <option value="4" <?php if($continente == 4) echo "selected"; ?>>Ásia</option>
-                        <option value="5" <?php if($continente == 5) echo "selected"; ?>>Europa</option>
-                        <option value="6" <?php if($continente == 6) echo "selected"; ?>>Oceania</option>
+                        <option value="3" <?php if($continente == 4) echo "selected"; ?>>Ásia</option>
+                        <option value="4" <?php if($continente == 5) echo "selected"; ?>>Europa</option>
+                        <option value="5" <?php if($continente == 6) echo "selected"; ?>>Oceania</option>
                     </select>
                     <input type="submit" value="Atualizar Dados" class="btn-enviar">
                 </fieldset>

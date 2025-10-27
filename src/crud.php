@@ -47,30 +47,32 @@ $resultCidades = mysqli_query($mysqli, $queryCidades);
                 <span>PAÍSES</span>
                 <a href="adicionaPais.html"><button class="btn-adicionar">Adicionar</button></a>
             </div>
-            <table border="1">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Continente</th>
-                    <th>População</th>
-                    <th>Idioma</th>
-                    <th>Ações</th>
+            <div class="table-container">
+                <table border="1">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Continente</th>
+                        <th>População</th>
+                        <th>Idioma</th>
+                        <th>Ações</th>
 
-                </tr>
-                <?php while ($pais = mysqli_fetch_assoc($resultPaises)) { ?>
-                <tr>
-                    <td><?= $pais['id_pais'] ?></td>
-                    <td><?= $pais['nm_pais'] ?></td>
-                    <td><?= $pais['nm_continente'] ?></td>
-                    <td><?= $pais['qtd_populacao'] ?></td>
-                    <td><?= $pais['nm_idioma'] ?></td>
-                    <td>
-                        <a href="php/editaPais.php?id=<?= $pais['id_pais'] ?>"><span class="material-symbols-outlined" title="Editar">edit</span></a>
-                        <a href="php/excluiPais.php?id=<?= $pais['id_pais'] ?>"><span class="material-symbols-outlined" title="Excluir">delete</span></a>
-                    </td>
-                </tr>
-                <?php } ?>
-            </table>
+                    </tr>
+                    <?php while ($pais = mysqli_fetch_assoc($resultPaises)) { ?>
+                    <tr>
+                        <td><?= $pais['id_pais'] ?></td>
+                        <td><?= $pais['nm_pais'] ?></td>
+                        <td><?= $pais['nm_continente'] ?></td>
+                        <td><?= $pais['qtd_populacao'] ?></td>
+                        <td><?= $pais['nm_idioma'] ?></td>
+                        <td>
+                            <a href="php/editaPais.php?id=<?= $pais['id_pais'] ?>"><span class="material-symbols-outlined" title="Editar">edit</span></a>
+                        <a href="#" onclick="confirmarExclusaoPais(<?= $pais['id_pais'] ?>)"><span class="material-symbols-outlined" title="Excluir">delete</span></a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </table>
+            </div>
             <div class="dados">
                 <p>Total de países:</p>
                 <?php echo "0".mysqli_num_rows($resultPaises)?>
@@ -80,33 +82,37 @@ $resultCidades = mysqli_query($mysqli, $queryCidades);
                 <span>CIDADES</span>
                 <a href="adicionaCidade.php"><button class="btn-adicionar">Adicionar</button></a>
             </div>
-            <table border="1">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>País</th>
-                    <th>População</th>
-                    <th>Ações</th>
-                </tr>
-                <?php while ($cidade = mysqli_fetch_assoc($resultCidades)) { ?>
-                <tr>
-                    <td><?= $cidade['id_cidade'] ?></td>
-                    <td><?= $cidade['nm_cidade'] ?></td>
-                    <td><?= $cidade['nm_pais'] ?></td>
-                    <td><?= $cidade['qtd_populacao'] ?></td>
-                     <td>
-                        <a href="php/editaCidade.php?id=<?= $cidade['id_cidade'] ?>"><span class="material-symbols-outlined" title="Editar">edit</span></a>
-                        <a href="php/excluiCidade.php?id=<?= $cidade['id_cidade'] ?>"><span class="material-symbols-outlined" title="Excluir">delete</span></a>
-                    </td>
-                </tr>
-                <?php } ?>
-            </table>
+            <div class="table-container">
+                <table border="1">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>País</th>
+                        <th>População</th>
+                        <th>Ações</th>
+                    </tr>
+                    <?php while ($cidade = mysqli_fetch_assoc($resultCidades)) { ?>
+                    <tr>
+                        <td><?= $cidade['id_cidade'] ?></td>
+                        <td><?= $cidade['nm_cidade'] ?></td>
+                        <td><?= $cidade['nm_pais'] ?></td>
+                        <td><?= $cidade['qtd_populacao'] ?></td>
+                        <td>
+                            <a href="php/editaCidade.php?id=<?= $cidade['id_cidade'] ?>"><span class="material-symbols-outlined" title="Editar">edit</span></a>
+                            <a href="#" onclick="confirmarExclusao(<?= $cidade['id_cidade'] ?>)"><span class="material-symbols-outlined" title="Excluir">delete</span></a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </table>
+            </div>
             <div class="dados">
                 <p>Total de cidades:</p>
                 <?php echo "0".mysqli_num_rows($resultCidades   )?>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Script para fazer um alerta bonitinho -->
+    <script src="js/script.js"></script>
 </body>
 </html>
 

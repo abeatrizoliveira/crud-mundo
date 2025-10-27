@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_left,keyboard_arrow_right " />
-    <link rel="shortcut icon" href="./assets/images/globe-solid.svg" type="image/svg">
+    <link rel="shortcut icon" href="../assets/images/globe-solid.svg" type="image/svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios" />
     <script src="https://kit.fontawesome.com/ccf50dfefd.js" crossorigin="anonymous"></script>
     <title>Mundo</title>
