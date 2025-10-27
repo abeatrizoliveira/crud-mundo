@@ -16,7 +16,7 @@
     <ul>
       <li><a href="#home">Início</a></li>
       <li><a href="#sobre">Sobre</a></li>
-      <li><a href="" class="link">Países</a></li>
+      <li><a href="#paises" class="link">Países</a></li>
       <li><a href="" class="link">Cidades</a></li>
       <li><a href="crud.php" class="link">Crud</a></li>
     </ul>
@@ -48,8 +48,29 @@
       </div>
     </div>
 
-    <div class="paises">
-      <!-- Div com um carrossel de todos os países -->
+    <div class="paises" id="paises">
+      <h1>PAÍSES</h1>
+      <div class="container-carrossel">
+        <button class="btn-left"><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
+        <div class="carrossel">
+          <?php
+          include 'php/conexao.php';
+          $sql = "SELECT pais.nm_pais, continente.nm_continente FROM pais INNER JOIN continente ON pais.cd_continente = continente.id_continente";
+          $result = $mysqli->query($sql);
+
+          while ($row = $result->fetch_assoc()) {
+          ?>
+            <div class="card">
+              <div class="textos">
+                <h3><?= $row['nm_pais'] ?></h3>
+                <p><?= $row['nm_continente'] ?></p>
+              </div>
+            </div>
+          <?php } ?>
+        </div>
+
+        <button class="btn-right"><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+      </div>
     </div>
     <!-- Adicionar mais divs -->
     <footer>

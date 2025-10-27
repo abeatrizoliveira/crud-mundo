@@ -37,7 +37,7 @@ $resultCidades = mysqli_query($mysqli, $queryCidades);
 <body>
     <div class="content-crud">
         <div class="estrelas"></div>
-        <a href="index.html" class="btn-voltar" title="Voltar">
+        <a href="index.php" class="btn-voltar" title="Voltar">
             <span class="material-symbols-outlined">
                 arrow_back_ios
             </span>

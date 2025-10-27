@@ -142,7 +142,6 @@
     animation-play-state: paused;
 }
 
-/* span */
 .banner span{
     color: var(--white);
     font-family: "Inter", sans-serif;
@@ -157,7 +156,7 @@
     width: 100%;
     padding: 40px;
     display: flex;
-    background-color: var(--dark-blue);
+    background-color: var(--blue);
 }
 
 .sobre .left, 
@@ -215,6 +214,56 @@
         transform: translateY(0) scale(1);
     }
 }
+
+/* Paises */
+.paises{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.carrossel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+.container-carrossel {
+    width: calc(280px * 3 + 70px * 2);
+    overflow: hidden;
+    display: flex;
+    gap: 40px;
+}
+.carrossel::-webkit-scrollbar {
+    display: none; 
+}
+.carrossel .card {
+    flex: 0 0 250px;
+    height: 350px;
+    background-color: var(--white);
+    color: #020e1498;
+}
+
+.btn-left,
+.btn-right{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.btn-left span,
+.btn-right span{
+    font-size: 3rem;
+    color: var(--white);
+}
+
 
 
 /* TELA DE CRUD */
