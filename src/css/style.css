@@ -229,6 +229,8 @@
 
 .carrossel {
     display: flex;
+    height: 100%;
+    align-items: center;
     gap: 20px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -237,18 +239,55 @@
 
 .container-carrossel {
     width: calc(280px * 3 + 70px * 2);
+    height: 300px;
     overflow: hidden;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 40px;
 }
 .carrossel::-webkit-scrollbar {
     display: none; 
 }
+
+.carrossel a{
+    text-decoration: none;
+}
+
 .carrossel .card {
     flex: 0 0 250px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
+    padding: 15px;
     background-color: var(--white);
-    color: #020e1498;
+    opacity: 0.6;
+    color: var(--dark-text);
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.card .bandeira{
+    height: 150px;
+}
+
+.card .bandeira img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card .textos{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card:hover{
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 .btn-left,
@@ -374,12 +413,14 @@
 
     .btn-voltar{
         position: relative;
-        height: 60px;
-        padding: 20px;
         display: flex;
+        padding: 20px;
         color: var(--white);
         text-decoration: none;
         z-index: 1;
+    }
+    .btn-voltar span{
+        font-size: 2rem;;
     }
 
     .container-form {
@@ -469,6 +510,37 @@
         cursor: pointer;
         transition: var(--transition);
     }
+    
+    .form a{
+        color: var(--white-shadow);
+        font-family: "Inter", sans-serif;
+        transition: var(--transition);
+        text-align: center;
+        font-size: small;
+    }
+
+    .form a:hover{
+        color: var(--white);
+    }
+
+/* parte do país: pai.php */
+.pais-content{
+    height: 100vh;
+    background-color: var(--dark-blue);
+    padding: 20px;
+}
+.pais{
+    display: flex;
+    gap: 20px;
+}
+
+.pais .textos{
+    color: var(--white);
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 /* Frescuras */
 .swal-custom {
