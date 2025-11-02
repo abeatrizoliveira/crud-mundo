@@ -55,17 +55,20 @@
         <div class="carrossel">
           <?php
           include 'php/conexao.php';
-          $sql = "SELECT pais.nm_pais, continente.nm_continente FROM pais INNER JOIN continente ON pais.cd_continente = continente.id_continente";
+          $sql = "SELECT pais.id_pais, pais.nm_pais, pais.cd_pais,  continente.nm_continente FROM pais INNER JOIN continente ON pais.cd_continente = continente.id_continente";
           $result = $mysqli->query($sql);
 
           while ($row = $result->fetch_assoc()) {
           ?>
-            <div class="card">
+          <a href="pais.php?id=<?= $row['id_pais'] ?>">
+            <div class="card" data-codigo="<?= $row['cd_pais'] ?>">
+              <div class="bandeira"></div>
               <div class="textos">
-                <h3><?= $row['nm_pais'] ?></h3>
+                <h3><?= $row['nm_pais'] ?> - <span class="sigla"></span></h3>
                 <p><?= $row['nm_continente'] ?></p>
               </div>
             </div>
+            </a>
           <?php } ?>
         </div>
 

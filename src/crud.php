@@ -4,6 +4,7 @@ include 'php/conexao.php';
 $queryPaises = "SELECT
     pais.id_pais,
     pais.nm_pais,
+    pais.cd_pais,
     pais.qtd_populacao,
     pais.nm_idioma,
     continente.nm_continente
@@ -52,6 +53,7 @@ $resultCidades = mysqli_query($mysqli, $queryCidades);
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Código</th>
                         <th>Continente</th>
                         <th>População</th>
                         <th>Idioma</th>
@@ -62,12 +64,13 @@ $resultCidades = mysqli_query($mysqli, $queryCidades);
                     <tr>
                         <td><?= $pais['id_pais'] ?></td>
                         <td><?= $pais['nm_pais'] ?></td>
+                        <td><?= $pais['cd_pais'] ?></td>
                         <td><?= $pais['nm_continente'] ?></td>
                         <td><?= $pais['qtd_populacao'] ?></td>
                         <td><?= $pais['nm_idioma'] ?></td>
                         <td>
                             <a href="php/editaPais.php?id=<?= $pais['id_pais'] ?>"><span class="material-symbols-outlined" title="Editar">edit</span></a>
-                        <a href="#" onclick="confirmarExclusaoPais(<?= $pais['id_pais'] ?>)"><span class="material-symbols-outlined" title="Excluir">delete</span></a>
+                            <a href="#" onclick="confirmarExclusaoPais(<?= $pais['id_pais'] ?>)"><span class="material-symbols-outlined" title="Excluir">delete</span></a>
                         </td>
                     </tr>
                     <?php } ?>
