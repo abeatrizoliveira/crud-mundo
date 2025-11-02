@@ -136,3 +136,20 @@ function confirmarExclusaoPais(id) {
         }
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carrossel = document.querySelector('.carrossel');
+  const btnLeft = document.querySelector('.btn-left');
+  const btnRight = document.querySelector('.btn-right');
+
+  const cardWidth = 250 + 20;
+
+  btnRight.addEventListener('click', () => {
+    carrossel.scrollBy({ left: cardWidth * 3, behavior: "smooth" });
+  });
+
+  btnLeft.addEventListener('click', () => {
+    carrossel.scrollBy({ left: -(cardWidth * 3), behavior: "smooth" });
+  });
+});
+    
