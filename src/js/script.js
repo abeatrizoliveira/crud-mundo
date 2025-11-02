@@ -1,17 +1,22 @@
+document.addEventListener('DOMContentLoaded', () => {
+
 // Código para mover a imagem do globo de acordo com o mouse
 const globe = document.querySelector('.globe');
-document.addEventListener('mousemove', (e) => {
-    let x = e.clientX / window.innerWidth * 100;
-    let y = e.clientY / window.innerHeight * 100;
-    globe.style.backgroundPosition = `${x}% ${y}%`;
-});
+if (globe){
+    document.addEventListener('mousemove', (e) => {
+        let x = e.clientX / window.innerWidth * 100;
+        let y = e.clientY / window.innerHeight * 100;
+        globe.style.backgroundPosition = `${x}% ${y}%`;
+        
+    });
+}
 
 
 // Código para o menu sumir e aparecer
 const menu = document.querySelector('.menu');
 console.log("Scroll:", window.scrollY);
 
-addEventListener("scroll", (event) => {
+window.addEventListener("scroll", (event) => {
     if(window.scrollY > 100){
         menu.classList.add('hiden');
     }else{
@@ -37,7 +42,7 @@ const observer = new IntersectionObserver(handleIntersection, {
 if (elementoParaAnimar) {
     observer.observe(elementoParaAnimar);
 }
-
+});
 
 // Código para confirmar exclusão de uma cidade bonitinho
 function confirmarExclusao(id) {
@@ -138,11 +143,14 @@ function confirmarExclusaoPais(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+// Código para o carrossel dos países
   const carrossel = document.querySelector('.carrossel');
   const btnLeft = document.querySelector('.btn-left');
   const btnRight = document.querySelector('.btn-right');
 
   const cardWidth = 250 + 20;
+
+if(carrossel && btnLeft && btnRight){
 
   btnRight.addEventListener('click', () => {
     carrossel.scrollBy({ left: cardWidth * 3, behavior: "smooth" });
@@ -151,5 +159,57 @@ document.addEventListener('DOMContentLoaded', () => {
   btnLeft.addEventListener('click', () => {
     carrossel.scrollBy({ left: -(cardWidth * 3), behavior: "smooth" });
   });
+}
+
+ 
+
+// Código para INTEGRAÇÃO com a API (Rest Countries)
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+    let codigo = card.dataset.codigo.toString();
+    codigo = codigo.padStart(3, '0');
+
+    fetch(`https://restcountries.com/v3.1/alpha/${codigo}`)
+    .then(response => response.json())
+    .then(data => {
+        const pais = data[0];
+        const bandeiraDiv = card.querySelector('.bandeira');
+        const siglaSpan = card.querySelector('.sigla');
+
+        const bandeiraUrl = pais.flags.png;
+        const sigla = pais.cca2;
+
+        bandeiraDiv.innerHTML = `<img src="${bandeiraUrl}" alt="Bandeira de ${pais.name.common}">`;
+        siglaSpan.textContent = sigla;
+    })
+    .catch(error => console.error('Erro ao buscar país:', error));
+}); 
+
+
+const paisContainer = document.querySelector('.pais');
+if (paisContainer) {
+    let codigoBandeira = paisContainer.dataset.codigo.toString();
+    codigoBandeira = codigoBandeira.padStart(3, '0');
+    const bandeiraDiv = paisContainer.querySelector('.bandeira');
+    const nomeDiv = paisContainer.querySelector('.nome-oficial');
+
+    fetch(`https://restcountries.com/v3.1/alpha/${codigoBandeira}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`País com código ${codigoBandeira} não encontrado na API.`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        const pais = data[0];
+        const nome = pais.translations.por.official;
+        const bandeiraUrl = pais.flags.png;
+        bandeiraDiv.innerHTML = `<img src="${bandeiraUrl}" alt="Bandeira de ${pais.name.common}">`;
+        nomeDiv.textContent = nome;
+    })
+    .catch(error => console.error('Erro ao buscar país:', error));
+} else {
+    console.error("Elemento '.pais' não encontrado na página.");
+}
+
 });
-    
