@@ -1,6 +1,5 @@
 <?php
 include 'conexao.php';
-
 header('Content-Type: application/json');
 
 if (!isset($_GET['id'])) {
@@ -8,7 +7,8 @@ if (!isset($_GET['id'])) {
     exit();
 }
 
-$idPais = (int)$_GET['id']; // força inteiro por segurança
+$idPais = (int)$_GET['id'];
+
 $queryExcluir = "DELETE FROM pais WHERE id_pais = $idPais;";
 
 if (mysqli_query($mysqli, $queryExcluir)) {
@@ -18,6 +18,7 @@ if (mysqli_query($mysqli, $queryExcluir)) {
         echo json_encode(['success' => false, 'message' => 'Nenhum país encontrado para excluir.']);
     }
 } else {
-    echo json_encode(['success' => false, 'message' => 'Erro no banco de dados.']);
+    // Captura o erro real do MySQL (por exemplo, violação de FK)
+    $erro = mysqli_error($mysqli);
+    echo json_encode(['success' => false, 'message' => "Erro ao excluir: $erro"]);
 }
-?>

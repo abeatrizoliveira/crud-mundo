@@ -1,43 +1,48 @@
-// Código para mover a imagem do globo de acordo com o mouse
-const globe = document.querySelector('.globe');
-document.addEventListener('mousemove', (e) => {
-    let x = e.clientX / window.innerWidth * 100;
-    let y = e.clientY / window.innerHeight * 100;
-    globe.style.backgroundPosition = `${x}% ${y}%`;
-});
+document.addEventListener('DOMContentLoaded', () => {
 
+    // Código para mover a imagem do globo de acordo com o mouse
+    const globe = document.querySelector('.globe');
+    if (globe) {
+        document.addEventListener('mousemove', (e) => {
+            let x = e.clientX / window.innerWidth * 100;
+            let y = e.clientY / window.innerHeight * 100;
+            globe.style.backgroundPosition = `${x}% ${y}%`;
 
-// Código para o menu sumir e aparecer
-const menu = document.querySelector('.menu');
-console.log("Scroll:", window.scrollY);
-
-addEventListener("scroll", (event) => {
-    if(window.scrollY > 100){
-        menu.classList.add('hiden');
-    }else{
-        menu.classList.remove('hiden');
+        });
     }
- })
- 
 
-// Código para a animação só funcionar quando estiver lá na imagem
-function handleIntersection(entries, observer) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) { 
-            entry.target.classList.add('animado');
-            observer.unobserve(entry.target); 
+
+    // Código para o menu sumir e aparecer
+    const menu = document.querySelector('.menu');
+    console.log("Scroll:", window.scrollY);
+
+    window.addEventListener("scroll", (event) => {
+        if (window.scrollY > 100) {
+            menu.classList.add('hiden');
+        } else {
+            menu.classList.remove('hiden');
         }
+    })
+
+
+    // Código para a animação só funcionar quando estiver lá na imagem
+    function handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animado');
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+    const elementoParaAnimar = document.querySelector('.right img');
+
+    const observer = new IntersectionObserver(handleIntersection, {
+        threshold: 0.1
     });
-}
-const elementoParaAnimar = document.querySelector('.right img');
-
-const observer = new IntersectionObserver(handleIntersection, {
-    threshold: 0.1 
+    if (elementoParaAnimar) {
+        observer.observe(elementoParaAnimar);
+    }
 });
-if (elementoParaAnimar) {
-    observer.observe(elementoParaAnimar);
-}
-
 
 // Código para confirmar exclusão de uma cidade bonitinho
 function confirmarExclusao(id) {
@@ -116,10 +121,10 @@ function confirmarExclusaoPais(id) {
                             icon: "success",
                             background: 'var(--dark-blue)',
                             color: 'var(--white)',
-                             customClass: {
+                            customClass: {
                                 popup: 'swal-custom',
                                 timerProgressBar: 'barra-progresso'
-                            },  
+                            },
                             timer: 1500,
                             timerProgressBar: true
                         }).then(() => location.reload());
@@ -138,18 +143,184 @@ function confirmarExclusaoPais(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const carrossel = document.querySelector('.carrossel');
-  const btnLeft = document.querySelector('.btn-left');
-  const btnRight = document.querySelector('.btn-right');
+    // Código para o carrossel dos países
+    const carrossel = document.querySelector('.carrossel');
+    const btnLeft = document.querySelector('.btn-left');
+    const btnRight = document.querySelector('.btn-right');
 
-  const cardWidth = 250 + 20;
+    const cardWidth = 280 + 70;
 
-  btnRight.addEventListener('click', () => {
-    carrossel.scrollBy({ left: cardWidth * 3, behavior: "smooth" });
-  });
+    if (carrossel && btnLeft && btnRight) {
 
-  btnLeft.addEventListener('click', () => {
-    carrossel.scrollBy({ left: -(cardWidth * 3), behavior: "smooth" });
-  });
+        btnRight.addEventListener('click', () => {
+            carrossel.scrollBy({ left: cardWidth * 3, behavior: "smooth" });
+        });
+
+        btnLeft.addEventListener('click', () => {
+            carrossel.scrollBy({ left: -(cardWidth * 3), behavior: "smooth" });
+        });
+    }
+
+    // Código para o carrossel das cidades
+    const cidades = document.querySelector('.carrossel-cidades');
+    const buttonLeft = document.querySelector('.btn-left-cidades');
+    const buttonRight = document.querySelector('.btn-right-cidades');
+
+    const cidadesWidth = 220;
+
+    if (cidades && buttonLeft && buttonRight) {
+
+        buttonRight.addEventListener('click', () => {
+            cidades.scrollBy({ left: cidadesWidth * 1, behavior: "smooth" });
+        });
+
+        buttonLeft.addEventListener('click', () => {
+            cidades.scrollBy({ left: -(cidadesWidth * 1), behavior: "smooth" });
+        });
+    }
+
+
+    // Código para INTEGRAÇÃO com a API (Rest Countries)
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        let codigo = card.dataset.codigo.toString();
+        codigo = codigo.padStart(3, '0');
+
+        fetch(`https://restcountries.com/v3.1/alpha/${codigo}`)
+            .then(response => response.json())
+            .then(data => {
+                const pais = data[0];
+                const bandeiraDiv = card.querySelector('.bandeira');
+                const siglaSpan = card.querySelector('.sigla');
+
+                const bandeiraUrl = pais.flags.png;
+                const sigla = pais.cca2;
+
+                bandeiraDiv.innerHTML = `<img src="${bandeiraUrl}" alt="Bandeira de ${pais.name.common}">`;
+                siglaSpan.textContent = sigla;
+            })
+            .catch(error => console.error('Erro ao buscar país:', error));
+    });
+
+
+    // Esse código é para página de detalhe do país (tá puxando dados tipo bandeira, nome oficial, moeda e etc...)
+    const paisContainer = document.querySelector('.pais-container');
+    if (paisContainer) {
+        
+        let codigoBandeira = paisContainer.dataset.codigo.toString();
+        codigoBandeira = codigoBandeira.padStart(3, '0');
+        const bandeiraDiv = paisContainer.querySelector('.bandeira');
+        const nomeDiv = paisContainer.querySelector('.nome-oficial');
+        const capitalDiv = paisContainer.querySelector('.capital');
+        const moedaDiv = paisContainer.querySelector('.moeda');
+        const moedaNomeDiv = paisContainer.querySelector('.moeda-nome');
+
+        fetch(`https://restcountries.com/v3.1/alpha/${codigoBandeira}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`País com código ${codigoBandeira} não encontrado na API.`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const pais = data[0];
+                const nome = pais.translations.por.official;
+                const capital = pais.capital;
+                const moeda = Object.values(pais.currencies)[0].symbol;
+                const moedaNome = Object.values(pais.currencies)[0].name;
+                const timezone = pais.timezones;
+                const bandeiraUrl = pais.flags.png;
+                bandeiraDiv.innerHTML = `<img src="${bandeiraUrl}" alt="Bandeira de ${pais.name.common}">`;
+                nomeDiv.textContent = nome;
+                capitalDiv.textContent = capital;
+                moedaDiv.textContent = moeda;
+                moedaNomeDiv.textContent = moedaNome;
+            })
+            .catch(error => console.error('Erro ao buscar país:', error));
+    } else {
+        console.error("Elemento '.pais' não encontrado na página.");
+    }
+
 });
-    
+
+// Código para chamar a API OpenWeather
+const apiKey = '7caf9f0ea915b65afd4f136881e9fb5c';
+const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
+
+const imagemClima = document.querySelector('.icone-clima');
+const temperatura = document.querySelector('.temperatura');
+const situacao = document.querySelector('.situacao');
+
+const weather = document.querySelector('.pais-weather');
+
+if (weather) {
+    const localPais = weather.dataset.codigo.toString();
+    if (localPais) {
+        fetchWeatherCity(localPais);
+    }
+}
+
+const weather2 = document.querySelector('.cidade-weather');
+if (weather2) {
+    const localPais = weather2.dataset.codigo.toString();
+    if (localPais) {
+        fetchWeatherCity(localPais);
+    }
+}
+
+function fetchWeatherCity(localPais) {
+    const url = `${apiUrl}?q=${localPais}&appid=${apiKey}&units=metric`;
+    fetchWeather(url);
+}
+
+function fetchWeather(url) {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            temperatura.textContent = `${Math.round(data.main.temp)}°C`;
+            situacao.textContent = data.weather[0].description;
+            const weatherMain = data.weather[0].main;
+            const icon = data.weather[0].icon;
+            const isDay = icon.includes("d");
+            atualizarImagem(weatherMain, isDay);
+        })
+        .catch(error => {
+            console.error("Erro nos dados do tempo:", error);
+            if (locationElement) {
+                alert("A não! Não foi possível achar a temperatura...");
+                temperatura.textContent = '';
+                situacao.textContent = '';
+            }
+        })
+}
+
+// Função para alterar os ícones padrões da API para personalizados
+function atualizarImagem(weatherMain, isDay) {
+    const imagemClima = document.querySelector('.icone-clima');
+
+    const periodo = isDay ? "day" : "night";
+
+    const imagens = {
+        "Clear_day": "../src/assets/images/clear-day.svg",
+        "Clear_night": "../src/assets/images/clear-night.svg",
+        "Clouds_day": "../src/assets/images/cloudy.svg",
+        "Clouds_night": "../src/assets/images/cloudy.svg",
+        "Rain_day": "../src/assets/images/rain.svg",
+        "Rain_night": "../src/assets/images/rain.svg",
+        "Drizzle_day": "../src/assets/images/drizzle.svg",
+        "Drizzle_night": "../src/assets/images/drizzle.svg",
+        "Thunderstorm_day": "../src/assets/images/thunderstorm.svg",
+        "Thunderstorm_night": "../src/assets/images/thunderstorm.svg",
+        "Snow_day": "../src/assets/images/snow.svg",
+        "Snow_night": "../src/assets/images/snow.svg",
+        "Tornado_day": "../src/assets/images/tornado.svg",
+        "Tornado_night": "../src/assets/images/tornado.svg",
+        "Mist_day": "../src/assets/images/mist.svg",
+        "Mist_night": "../src/assets/images/mist.svg",
+        "Fog_day": "../src/assets/images/fog.svg",
+        "Fog_night": "../src/assets/images/fog.svg",
+    };
+    const chave = `${weatherMain}_${periodo}`;
+    const imagemSelecionada = imagens[chave] || "../src/assets/images/clear-day.svg";
+    imagemClima.src = imagemSelecionada;
+}

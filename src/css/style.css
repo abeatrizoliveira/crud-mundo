@@ -1,14 +1,16 @@
+/* Importações */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-*{
+/* Configurações padrões */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
-:root{
-    --white-shadow:#ffffff7b;
+:root {
+    --white-shadow: #ffffff7b;
     --white: #fff;
     --dark-blue: #0E242F;
     --blue: #0b2a3b;
@@ -19,27 +21,30 @@
     --transition: .5s all ease;
 }
 
-.menu{
+/* =-=-=-=- TELA INICIAL (index.php) =-=-=-=- */
+
+/* Menu da pág */
+.menu {
     position: fixed;
     padding: 20px;
     display: flex;
     align-items: center;
     width: 100%;
     z-index: 2;
-    transition: var(--transition); 
+    transition: var(--transition);
 }
 
-.menu.hiden{
+.menu.hiden {
     opacity: 0;
 }
 
-.menu.hiden:hover{
+.menu.hiden:hover {
     opacity: 1;
     background-color: var(--dark-blue);
     box-shadow: 0px 0px 10px var(--dark-shadow);
 }
 
-.menu i{
+.menu i {
     color: var(--white-shadow);
     font-size: 2rem;
     margin-right: auto;
@@ -47,12 +52,12 @@
     transition: var(--transition);
 }
 
-.menu i:hover{
+.menu i:hover {
     scale: 1.1;
     color: var(--white);
 }
 
-.menu ul{
+.menu ul {
     list-style: none;
     display: flex;
     justify-content: flex-end;
@@ -60,20 +65,21 @@
     width: 100%;
 }
 
-.menu ul li a{
+.menu ul li a {
     text-decoration: none;
     color: var(--white-shadow);
     font-family: "Inter", sans-serif;
     transition: var(--transition);
 }
 
-.menu ul li a:hover{
+.menu ul li a:hover {
     font-size: large;
     color: var(--white);
 }
 
+/* Banner da pág */
 
-.banner{
+.banner {
     height: 100vh;
     width: 100%;
     text-align: center;
@@ -85,8 +91,8 @@
     background-color: var(--dark-blue);
 }
 
-.estrelas{
-    background-image: url(../assets/images/stars.gif);  
+.estrelas {
+    background-image: url(../assets/images/stars.gif);
     background-size: cover;
     height: 100vh;
     width: 100%;
@@ -96,21 +102,20 @@
     opacity: 0.2;
 }
 
-.banner-text{
+.banner-text {
     color: var(--white);
     position: absolute;
     top: -20%;
     z-index: 0;
 }
 
-.banner-text h1{
+.banner-text h1 {
     letter-spacing: 25px;
     text-shadow: 0px 0px 20px var(--white-shadow);
     font-size: 12rem;
 }
 
-
-.banner-content{
+.banner-content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,8 +124,16 @@
     transform: translateY(10%);
 }
 
+.banner span {
+    color: var(--white);
+    font-family: "Inter", sans-serif;
+    margin-top: 20px;
+    font-style: italic;
+    text-align: center;
+}
+
 /* Globo que se move */
-.globe{
+.globe {
     width: 350px;
     height: 350px;
     border-radius: 50%;
@@ -133,25 +146,18 @@
 }
 
 @keyframes rotate {
-    to{
+    to {
         background-position: 100%;
     }
 }
 
-.globe:hover{
+.globe:hover {
     animation-play-state: paused;
 }
 
-.banner span{
-    color: var(--white);
-    font-family: "Inter", sans-serif;
-    margin-top: 20px;
-    font-style: italic;
-    text-align: center;
-}
 
-/* sobre */
-.sobre{
+/* Seção sobre da pág */
+.sobre {
     height: 100vh;
     width: 100%;
     padding: 40px;
@@ -159,8 +165,8 @@
     background-color: var(--blue);
 }
 
-.sobre .left, 
-.sobre .right{
+.sobre .left,
+.sobre .right {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -168,12 +174,12 @@
     flex-direction: column;
 }
 
-.sobre .left{
+.sobre .left {
     padding: 20px;
     gap: 20px;
 }
 
-.sobre .left h2{
+.sobre .left h2 {
     text-align: left;
     font-size: 3rem;
     padding: 10px;
@@ -181,18 +187,19 @@
     text-shadow: 0px 0px 4px var(--white-shadow);
 }
 
-.sobre .left p{
+.sobre .left p {
     text-align: center;
     font-family: "Inter", sans-serif;
     color: var(--white);
     font-size: 1.1rem;
     line-height: 1.5;
 }
-.sobre .right img{
+
+.sobre .right img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    opacity: 0; 
+    opacity: 0;
     transform: translateY(50px) scale(0.9);
 }
 
@@ -201,22 +208,26 @@
 }
 
 @keyframes salto {
+
+    /* Animação para imagem dar um pulo*/
     0% {
         opacity: 0;
-        transform: translateY(100px) scale(0.5); 
+        transform: translateY(100px) scale(0.5);
     }
+
     60% {
         opacity: 1;
-        transform: translateY(-40px) scale(1.1); 
+        transform: translateY(-40px) scale(1.1);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
 
-/* Paises */
-.paises{
+/* Seção de países */
+.paises {
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -227,55 +238,250 @@
     color: var(--white);
 }
 
+.paises h1 {
+    font-size: 3rem;
+    padding: 10px;
+    color: var(--white);
+    text-shadow: 0px 0px 4px var(--white-shadow);
+}
+
+/* Carrossel  */
 .carrossel {
     display: flex;
-    gap: 20px;
+    height: 100%;
+    width: calc(250px * 3 + 40px * 2);
+    align-items: center;
+    gap: 30px;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
 }
 
 .container-carrossel {
-    width: calc(280px * 3 + 70px * 2);
+    width: 100%;
+    height: 300px;
     overflow: hidden;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 40px;
 }
+
 .carrossel::-webkit-scrollbar {
-    display: none; 
-}
-.carrossel .card {
-    flex: 0 0 250px;
-    height: 350px;
-    background-color: var(--white);
-    color: #020e1498;
+    display: none;
 }
 
+.carrossel a {
+    text-decoration: none;
+}
+
+.carrossel .card {
+    width: 250px;
+    height: 250px;
+    padding: 15px;
+    background-color: var(--white);
+    opacity: 0.6;
+    color: var(--dark-text);
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+
+.card .bandeira {
+    height: 150px;
+}
+
+.card .bandeira img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card .textos {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Seção de cidades */
+.cidades {
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.cidades h1 {
+    font-size: 3rem;
+    color: var(--white);
+    text-align: center;
+    text-shadow: 0px 0px 4px var(--white-shadow);
+}
+
+.cidades .textos p {
+    color: var(--white);
+    font-family: "Inter", sans-serif;
+    display: flex;
+    text-indent: 20px;
+    text-align: justify;
+    font-size: large;
+}
+
+.cidades .textos,
+.cidades .container-carrossel-cidades {
+    flex: 1;
+}
+
+.cidades .textos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cidades .card {
+    width: 200px;
+    height: 200px;
+    background-color: var(--white);
+    color: var(--dark-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.cidades .card h3 {
+    margin-bottom: 5px;
+}
+
+.cidades .card p {
+    display: inline;
+    text-align: center;
+    color: var(--dark-text);
+}
+
+.carrossel-cidades a {
+    text-decoration: none;
+}
+
+.carrossel-cidades {
+    padding: 20px;
+    display: flex;
+    height: 100%;
+    width: 240px;
+    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+
+.carrossel-cidades::-webkit-scrollbar {
+    display: none;
+}
+
+.container-carrossel-cidades {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Botões dos carrosséis */
+
 .btn-left,
-.btn-right{
+.btn-right,
+.btn-left-cidades,
+.btn-right-cidades {
     background-color: transparent;
     border: none;
     cursor: pointer;
     outline: none;
 }
+
 .btn-left span,
-.btn-right span{
+.btn-right span,
+.btn-left-cidades span,
+.btn-right-cidades span {
     font-size: 3rem;
     color: var(--white);
 }
 
+footer{
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: var(--white);
+    font-family: 'inter', sans-serif;
+    background-color: var(--dark-blue);
+}
+
+footer p{
+    font-size: large;
+}
+
+footer span{
+    font-size: medium;
+}
+
+footer .footer-icons{
+    display: flex;
+    gap: 20px;   
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+footer i{
+    font-size: 1.5rem;
+}
+
+footer a{
+    text-decoration: none;
+    color: var(--white);
+    transition: var(--transition);
+    opacity: 0.7;
+}
+
+footer a:hover{
+    opacity: 1;
+    transform: scale(1.05);
+}
 
 
-/* TELA DE CRUD */
-.content-crud{
-    position: relative;  
+/* =-=-=-=- TELA DE CRUD (crud.php) =-=-=-=- */
+
+.content-crud {
+    position: relative;
     background-color: var(--dark-blue);
     z-index: 1;
     min-height: 100vh;
     height: 100%;
 }
 
-.container-crud{
+.container-crud {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -284,7 +490,7 @@
     z-index: 2;
 }
 
-.content-crud .titulo{
+.content-crud .titulo {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -292,7 +498,7 @@
     margin-bottom: 20px;
 }
 
-.content-crud .titulo .btn-adicionar{
+.content-crud .titulo .btn-adicionar {
     border: none;
     padding: 10px;
     border-radius: 10px;
@@ -300,60 +506,62 @@
     transition: var(--transition);
 }
 
-.content-crud .titulo .btn-adicionar:hover{
+.content-crud .titulo .btn-adicionar:hover {
     scale: 1.1;
 }
 
-.content-crud span{
+.content-crud span {
     font-size: xx-large;
     color: var(--white);
     text-shadow: 0px 0px 20px var(--white-shadow);
 }
+
 .table-container {
     width: 60%;
     height: 350px;
-    overflow-y: auto;    
+    overflow-y: auto;
     border-radius: 10px;
     border: 1.5px solid rgb(255, 255, 255);
     box-shadow: 0px 0px 10px var(--dark-shadow);
     background-color: var(--dark-blue);
 }
+
 .content-crud table {
     width: 100%;
     height: 100%;
     font-family: "Inter", sans-serif;
-    border-radius: 10px;    
-    border: 1.5px solid rgb(255, 255, 255); 
-    border-collapse: separate;    
-    border-spacing: 0;          
-    box-shadow: 0px 0px 10px var(--dark-shadow);    
-    background-color: var(--dark-blue);    
+    border-radius: 10px;
+    border: 1.5px solid rgb(255, 255, 255);
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0px 0px 10px var(--dark-shadow);
+    background-color: var(--dark-blue);
 }
 
 .content-crud table th,
 .content-crud table td {
     padding: 12px 15px;
     color: var(--white);
-    border: none; 
-    border-bottom: 1.5px solid rgba(255, 255, 255, 0.5); 
+    border: none;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
     /* border-right: 1.5px solid rgba(255, 255, 255, 0.5);  */
     text-align: left;
 }
 
-.content-crud table td span{
+.content-crud table td span {
     cursor: pointer;
     font-size: x-large;
 }
 
 .content-crud table tr:nth-child(even) {
-    background-color: rgba(255,255,255,0.05);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .content-crud table tr:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-.dados{
+.dados {
     width: 60%;
     display: flex;
     color: var(--white);
@@ -364,113 +572,267 @@
 }
 
 
-    /* Parte dos formulários!! */
+/* =-=-=-=- FORMULÁRIOS DIVERSOS (adiciona e atualiza) =-=-=-=- */
 
-    .content{
-        height: 100vh;
-        width: 100%;
-        background-color: var(--dark-blue);
-    }
+.content {
+    height: 100vh;
+    width: 100%;
+    background-color: var(--dark-blue);
+}
 
-    .btn-voltar{
-        position: relative;
-        height: 60px;
-        padding: 20px;
-        display: flex;
-        color: var(--white);
-        text-decoration: none;
-        z-index: 1;
-    }
+.btn-voltar {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    width: 60px;
+    height: 60px;
+    color: var(--white);
+    text-decoration: none;
+    z-index: 1;
+}
 
-    .container-form {
-        position: relative;
-        height: calc(100% - 80px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
+.btn-voltar span {
+    font-size: 2rem;
+}
 
-    .globe-form {
-        position: absolute; 
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        background-image: url("https://wallpapers.com/images/hd/satellite-world-map-99d6y5gsakbb8wh9.jpg");
-        background-size: cover;
-        box-shadow: -15px -15px 20px var(--dark-blue-shadow) inset,
-                    10px 10px 25px var(--white-shadow) inset,
-                    0px 0px 10px var(--dark-blue);
-        animation: rotate 20s linear infinite;
-        z-index: 0; 
-    }
+.container-form {
+    position: relative;
+    height: calc(100% - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-    .form fieldset {
-        position: relative;
-        z-index: 1; 
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-        box-sizing: border-box;
-        border-radius: 10px;
-        background-color: rgba(0,0,0,0.5);
-    }
+.globe-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-image: url("https://wallpapers.com/images/hd/satellite-world-map-99d6y5gsakbb8wh9.jpg");
+    background-size: cover;
+    box-shadow: -15px -15px 20px var(--dark-blue-shadow) inset,
+        10px 10px 25px var(--white-shadow) inset,
+        0px 0px 10px var(--dark-blue);
+    animation: rotate 20s linear infinite;
+    z-index: 0;
+}
 
-    .form legend{
-        color: var(--white);
-        font-size: 2rem;
-        font-weight: normal;
-    }
+.form fieldset {
+    position: relative;
+    z-index: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
-    .form input{
-        background-color: transparent;
-        border: none;
-        outline: none;
-        height: 30px;
-        border-bottom: 1.5px solid var(--white);
-        text-align: left;
-        color: var(--white);
-    }
+.form legend {
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: normal;
+}
 
-    .form input::placeholder{
-        color: var(--white-shadow);
-    }
+.form input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 30px;
+    border-bottom: 1.5px solid var(--white);
+    text-align: left;
+    color: var(--white);
+}
 
-    .form select{
-        background-color: transparent;
-        border: none;
-        outline: none;
-        height: 30px;
-        border-bottom: 1.5px solid var(--white);
-        text-align: left;
-        color: var(--white);
-    }
+.form input::placeholder {
+    color: var(--white-shadow);
+}
 
-    .form select option{
-        color: var(--dark-text);
-    }
+.form select {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 30px;
+    border-bottom: 1.5px solid var(--white);
+    text-align: left;
+    color: var(--white);
+}
 
-    .form select option:hover{
-        background-color: var(--dark-blue);
-    }
+.form select option {
+    color: var(--dark-text);
+}
 
-    .form .btn-enviar{
-        height: 40px;
-        background-color: var(--white);
-        color: var(--dark-text);
-        text-align: center;
-        font-size: 1.1rem;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: var(--transition);
-    }
+.form select option:hover {
+    background-color: var(--dark-blue);
+}
 
-/* Frescuras */
+.form .btn-enviar {
+    height: 40px;
+    background-color: var(--white);
+    color: var(--dark-text);
+    text-align: center;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.form a {
+    color: var(--white-shadow);
+    font-family: "Inter", sans-serif;
+    transition: var(--transition);
+    text-align: center;
+    font-size: small;
+}
+
+.form a:hover {
+    color: var(--white);
+}
+
+/* =-=-=-=- TELA DO PAÍS (pais.php) =-=-=-=- */
+.pais-content {
+    height: 100vh;
+    background-color: var(--dark-blue);
+}
+
+.pais {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+    border-bottom: var(--white) 1.5px solid;
+}
+
+.pais .bandeira img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.pais .textos,
+.pais-info .textos,
+.pais-weather .textos {
+    color: var(--white);
+    font-family: "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pais-info .textos .infos {
+    display: flex;
+    gap: 30px;
+}
+
+.pais-info .textos .infos .info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pais-info {
+    padding: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.pais-info .textos p {
+    font-size: larger;
+}
+
+.pais-weather {
+    height: 100vh;
+    width: 300px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: var(--white) 1.5px solid;
+    background-color: var(--dark-blue);
+}
+
+.pais-weather .menu {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+.pais-weather .menu .icone-clima {
+    width: 200px;
+}
+
+.pais-weather .menu .textos.centro {
+    text-align: center;
+}
+
+
+/* =-=-=-=- TELA DA CIDADE (cidade.php) =-=-=-=- */
+.cidade-content {
+    height: 100vh;
+    background-color: var(--dark-blue);
+}
+
+.estrelas {
+    background-image: url(../assets/images/stars.gif);
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+.cidade-container {
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.cidade {
+    background-color: #0b2a3b;
+    height: 400px;
+    width: 330px;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 0px 10px var(--dark-shadow);
+    color: var(--white);
+    font-family: 'inter', sans-serif;
+    z-index: 5;
+}
+
+.cidade .textos h2 {
+    margin-bottom: 2px;
+}
+
+.cidade .textos p {
+    margin-bottom: 10px;
+}
+
+.cidade .icone-clima {
+    width: 200px;
+    filter: drop-shadow(0px 0px 5px #0a131e5e);
+}
+
+/* ADICIONAIS */
+/* Alerta de javascript */
 .swal-custom {
     min-height: 300px;
     font-family: 'Inter', sans-serif;
@@ -478,7 +840,7 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    padding: 20px 20px; 
+    padding: 20px 20px;
 }
 
 .alert-icon {
@@ -493,12 +855,12 @@
 
 .alert-text {
     font-size: 14px;
-    margin: 0 0 0px 0; 
+    margin: 0 0 0px 0;
 }
 
 .swal2-actions {
     margin-top: 0px;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .alert-icon svg {
@@ -506,13 +868,27 @@
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    25% { transform: scale(1.2); }
-    50% { transform: scale(1); }
-    75% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
-.barra-progresso{
-  background-color: #ffffff !important;
+.barra-progresso {
+    background-color: #ffffff !important;
 }

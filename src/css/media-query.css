@@ -1,0 +1,127 @@
+@media screen and (max-width: 720px) {
+     /* Menu do index.php */
+    .menu i{
+        display: none;
+    }
+    .menu ul{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Seção do banner: index.php */
+    .banner-text h1{
+        font-size: 4rem;
+        letter-spacing: 10px;
+    }
+
+    /* Seção de sobre: index.php */
+    .sobre{
+        flex-direction: column;
+        height: 100%;
+        gap: 40px;
+    }
+
+    .sobre .left h2{
+        font-size: xx-large;
+        text-align: center;
+    }
+
+    .sobre .right img{
+        width: 200px;
+    }
+
+    /* Seção de países: index.php */
+    .container-carrossel {
+        width: calc(280px + 80px * 2);
+    }
+
+    .carrossel{
+        justify-content: center;
+    }
+
+    /* Seção de cidades: index.php */
+    .cidades{
+        
+    }
+
+
+    /* Tela de crud: crud.php */
+    .container-crud{
+        padding: 20px;
+    }
+
+    .table-container{
+        width: 100%;
+    }
+
+    /* Adiciona país */
+    .content{
+        padding: 20px;
+    }
+    .globe-form{
+        width: 420px;
+        height: 420px;
+    }
+
+    /* Tela individual de países: pais.php */
+    .pais-content {
+        height: 100%;
+    }
+
+    .pais{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    
+    .pais .textos,
+    .pais-info .textos,
+    .pais-weather .textos {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        gap: 0px;
+    }
+
+    .pais-info .textos .infos {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .pais-info .textos .infos .info {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .pais-weather{
+        position: relative;
+        height: auto;
+        width: 100%;
+        border: none;
+        display: block;
+    }
+
+    .pais-info{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-bottom: var(--white) 1.5px solid;
+        gap: 0px;
+    }
+
+    .pais-weather .menu{
+        position: relative;
+        height: auto;
+        width: 100%;
+        background-color: var(--dark-blue);
+    }
+}

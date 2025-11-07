@@ -9,13 +9,12 @@ if (isset($_GET['id'])) {
     $sql = "SELECT id_cidade, nm_cidade, qtd_populacao, cd_pais FROM cidade WHERE id_cidade = '$id'";
     $result = $mysqli->query($sql);
 
-    if($result->num_rows > 0) {
+    if ($result->num_rows > 0) {
         $cidade = $result->fetch_assoc();
         $nome = $cidade['nm_cidade'];
         $populacao = $cidade['qtd_populacao'];
         $pais = $cidade['cd_pais'];
         $idCidade = $cidade['id_cidade'];
-
     } else {
         echo "País não encontrado!";
         exit();
@@ -37,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $mysqli->close();
-    
+
     header("Location: ../crud.php");
 }
 
@@ -45,16 +44,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/media-query.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_left,keyboard_arrow_right " />
     <link rel="shortcut icon" href="../assets/images/globe-solid.svg" type="image/svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios" />
     <script src="https://kit.fontawesome.com/ccf50dfefd.js" crossorigin="anonymous"></script>
     <title>Mundo</title>
 </head>
+
 <body>
     <div class="content">
         <a href="../crud.php" class="btn-voltar" title="Voltar">
@@ -66,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="editaCidade.php" method="POST" class="form">
                 <fieldset>
                     <legend>‎EDITAR CIDADE</legend>
-                    
-                    <input type="hidden" name="id" value="<?php echo $idCidade; ?>"> 
+
+                    <input type="hidden" name="id" value="<?php echo $idCidade; ?>">
                     <input type="text" name="nome" value="<?php echo $cidade['nm_cidade']; ?>" required>
                     <input type="number" name="populacao" min="0" value="<?php echo $cidade['qtd_populacao']; ?>">
                     <select name="pais" required>
@@ -75,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php
                         if ($resultPais->num_rows > 0) {
                             while ($linha = $resultPais->fetch_assoc()) {
-                                echo '<option value="'.$linha['id_pais'].'">'.$linha['nm_pais'].'</option>';
+                                echo '<option value="' . $linha['id_pais'] . '">' . $linha['nm_pais'] . '</option>';
                             }
                         } else {
                             echo '<option value="">Nenhum país disponível</option>';
@@ -88,4 +90,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </body>
+
 </html>

@@ -9,6 +9,7 @@ create table continente(
 create table pais(
     id_pais int primary key auto_increment,
     nm_pais varchar(50) not null,
+    cd_pais varchar(3) not null,
     qtd_populacao bigint not null,
     nm_idioma varchar(50) not null,
     cd_continente int not null,
@@ -32,12 +33,12 @@ insert into continente (nm_continente) values
 ('Oceania');
 
 -- Inserção dos Países
-INSERT INTO pais (nm_pais, nm_idioma, qtd_populacao, cd_continente) VALUES
-('Brasil', 'Português', 211695000, 2),
-('Estados Unidos', 'Inglês', 334914895, 2),
-('China', 'Mandarim', 1409670000, 3),
-('Índia', 'Hindi e Inglês', 1460000000, 3),
-('Alemanha', 'Alemão', 83000000, 4);
+INSERT INTO pais (nm_pais,cd_pais, nm_idioma, qtd_populacao, cd_continente) VALUES
+('Brasil', 076, 'Português', 211695000, 2),
+('Estados Unidos', 840, 'Inglês', 334914895, 2),
+('China', 156, 'Mandarim', 1409670000, 3),
+('Índia', 356, 'Hindi e Inglês', 1460000000, 3),
+('Alemanha', 276, 'Alemão', 83000000, 4);
 
 -- Brasil
 INSERT INTO cidade (nm_cidade, qtd_populacao, cd_pais) VALUES
