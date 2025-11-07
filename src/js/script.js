@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.querySelector('.menu');
     console.log("Scroll:", window.scrollY);
 
-addEventListener("scroll", (event) => {
-    if(window.scrollY > 100){
-        menu.classList.add('hiden');
-    }else{
-        menu.classList.remove('hiden');
-    }
- })
- 
+    window.addEventListener("scroll", (event) => {
+        if (window.scrollY > 100) {
+            menu.classList.add('hiden');
+        } else {
+            menu.classList.remove('hiden');
+        }
+    })
+
 
     // Código para a animação só funcionar quando estiver lá na imagem
     function handleIntersection(entries, observer) {

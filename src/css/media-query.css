@@ -42,7 +42,7 @@
 
     /* Seção de cidades: index.php */
     .cidades{
-        
+        flex-direction: column;
     }
 
 
