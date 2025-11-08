@@ -13,5 +13,5 @@ O sistema de gerenciamento e consulta de países e cidades permite visualizar e 
 
 ## 📃 Créditos
 - imagem de contribuidores: [contrib.rocks](https://contrib.rocks).
-- API de tempo:
-- API de países: 
+- API de tempo: [openWeatherApi](https://openweathermap.org/api)
+- API de países: [RESTCountries](https://restcountries.com/)

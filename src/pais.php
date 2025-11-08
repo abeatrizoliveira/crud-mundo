@@ -1,11 +1,12 @@
 <?php
 include 'php/conexao.php';
-
+// Verifica se o ID passou certinho e faz o select
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT pais.id_pais, pais.nm_pais, pais.cd_pais, pais.qtd_populacao, pais.nm_idioma, pais.cd_continente, continente.nm_continente FROM pais INNER JOIN continente ON pais.cd_continente = continente.id_continente WHERE pais.id_pais = $id";
     $result = $mysqli->query($sql);
 
+    // Salva nas variáveis
     if ($result->num_rows > 0) {
         $pais = $result->fetch_assoc();
         $nome = $pais['nm_pais'];
