@@ -66,7 +66,6 @@
               <div class="bandeira"></div>
               <div class="textos">
                 <h3><?= $row['nm_pais'] ?> - <span class="sigla"></span></h3>
-                <h3><?= $row['nm_pais'] ?> - <span class="sigla"></span></h3>
                 <p><?= $row['nm_continente'] ?></p>
               </div>
             </div>

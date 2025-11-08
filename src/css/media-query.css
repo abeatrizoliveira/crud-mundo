@@ -33,18 +33,44 @@
 
     /* Seção de países: index.php */
     .container-carrossel {
-        width: calc(280px + 80px * 2);
+        gap: 20px;
     }
 
     .carrossel{
         justify-content: center;
+        width: calc(250px * 1 + 40px * 2);
     }
 
     /* Seção de cidades: index.php */
-    .cidades{
-        flex-direction: column;
+    .container-carrossel-cidades{
+        width: 100% !important;
+        justify-content: center;
     }
 
+    .carrossel-cidades{
+        justify-content: left;
+        padding: 0px;
+        width: 200px;
+    }
+
+    .cidades{
+        flex-direction: column;
+        padding: 0px;
+        gap: 0;
+    }
+
+    .cidades .card{
+        width: 200px !important;
+    }
+
+    .cidades .textos{
+        padding: 40px;
+    }
+
+    .cidades .textos p{
+        text-align: center;
+        text-indent: 0px;
+    }
 
     /* Tela de crud: crud.php */
     .container-crud{
@@ -53,6 +79,16 @@
 
     .table-container{
         width: 100%;
+    }
+
+    .content-crud .titulo{
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .dados{
+        width: 100%;
+        justify-content: space-between;
     }
 
     /* Adiciona país */
@@ -104,7 +140,10 @@
         height: auto;
         width: 100%;
         border: none;
-        display: block;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .pais-info{
@@ -123,5 +162,20 @@
         height: auto;
         width: 100%;
         background-color: var(--dark-blue);
+    }
+
+    /* Adiciona e altera país/cidade */
+
+    .content{
+        height: 100%;
+    }
+
+    .globe-form{
+        width: 350px;
+        height: 350px;
+    }
+
+    .form legend{
+        text-align: center;
     }
 }

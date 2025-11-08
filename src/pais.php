@@ -68,7 +68,7 @@ if (isset($_GET['id'])) {
             </div>
         </div>
         <div class="pais-weather" data-codigo="<?= $nome ?>">
-            <div class="menu">
+            <div class="pais-menu">
                 <div class="textos centro">
                     <h2 class="situacao"></h2>
                     <img class="icone-clima" src="" alt="">
